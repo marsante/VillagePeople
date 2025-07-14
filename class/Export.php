@@ -94,14 +94,16 @@ class Export {
   }
 
   public static function exportYamlBrut() {
-    foreach(glob("population/*.obj") as $file) {
-      $obj = file_get_contents($file);
-      $obj = unserialize($obj);
-      $yaml = Spyc::YAMLDump((array)$obj, false, false, true);
-      $filedest='population/'.$obj->getId().'.yml';
-      file_put_contents($filedest, $yaml);
-      unlink($file);
-    }
+      foreach (glob("population/*.obj") as $file) {
+          $obj = file_get_contents($file);
+          $obj = unserialize($obj);
+          $dataArray = (array)$obj;
+          $yaml = yaml_emit($dataArray);
+
+          $filedest = 'population/' . $obj->getId() . '.yml';
+          file_put_contents($filedest, $yaml);
+          unlink($file);
+      }
   }
 
 }

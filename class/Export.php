@@ -24,38 +24,39 @@
 * Class: export
 *
 * @author Bertrand Boutillier <b.boutillier@gmail.com>
+* @contrib Michaël Val
 *
 */
 
 class Export {
 
-  private function getArrayFromObj($obj) {
-    $add = $obj->getAddress('personal');
-    return $array=[
-      'id'=>(int)$obj->getId(),
-      'firstname'=>(string)$obj->getFirstname(),
-      'birthname'=>(string)$obj->getBirthname(),
-      'lastname'=>(string)$obj->getLastname(),
-      'birthdate'=>(string)$obj->getBirthdate(),
-      'age'=>(int)$obj->getAgeFromBirthdate($obj->getBirthdate()),
-      'weight'=>(int)$obj->getWeight(),
-      'height'=>(int)$obj->getHeight(),
-      'gender'=>(string)$obj->getGender(),
-      'motherId'=>(int)$obj->getMotherId(),
-      'fatherId'=>(int)$obj->getFatherId(),
-      'childrenId'=>(array)$obj->getChildId(),
-      'siblingsId'=>(array)$obj->getSiblingsId(),
-      'relationShipId'=>(int)$obj->getPartnerId(),
-      'married'=>(bool)$obj->getIsMarried(),
-      'job'=>(string)$obj->getJob(),
-      'addressStreetNumber'=>(int)$add->getAddressStreetNumber(),
-      'addressStreet'=>(string)$add->getAddressStreet(),
-      'addressCity'=>(string)$add->getAddressCity(),
-      'addressPostalCode'=>(string)$add->getAddressPostalCode(),
-      'mobilPhone'=>(string)$obj->getMobilPhone(),
-      'phone'=>(string)$add->getAddressPhone(),
-      'email'=>(string)$obj->getPersonalEMail()
-    ];
+  public static function getArrayFromObj($obj) {
+      $add = $obj->getAddress('personal');
+      return [
+          'id' => (int)$obj->getId(),
+          'firstname' => (string)$obj->getFirstname(),
+          'birthname' => (string)$obj->getBirthname(),
+          'lastname' => (string)$obj->getLastname(),
+          'birthdate' => (string)$obj->getBirthdate(),
+          'age' => (int)$obj->getAgeFromBirthdate($obj->getBirthdate()),
+          'weight' => (int)$obj->getWeight(),
+          'height' => (int)$obj->getHeight(),
+          'gender' => (string)$obj->getGender(),
+          'motherId' => (int)$obj->getMotherId(),
+          'fatherId' => (int)$obj->getFatherId(),
+          'childrenId' => (array)$obj->getChildId(),
+          'siblingsId' => (array)$obj->getSiblingsId(),
+          'relationShipId' => (int)$obj->getPartnerId(),
+          'married' => (bool)$obj->getIsMarried(),
+          'job' => (string)$obj->getJob(),
+          'addressStreetNumber' => (int)$add->getAddressStreetNumber(),
+          'addressStreet' => (string)$add->getAddressStreet(),
+          'addressCity' => (string)$add->getAddressCity(),
+          'addressPostalCode' => (string)$add->getAddressPostalCode(),
+          'mobilPhone' => (string)$obj->getMobilPhone(),
+          'phone' => (string)$add->getAddressPhone(),
+          'email' => (string)$obj->getPersonalEMail()
+      ];
   }
 
   public static function exportYaml() {
